@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internship Confirmation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f2f2f2;
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+    }
+    .email-wrapper {
+      width: 100%;
+      background-color: #f2f2f2;
+      padding: 0;
+    }
+    .email-container {
+      width: 90%;
+      max-width: 800px;
+      margin: auto;
+      background-color: #060B1A;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      background-color: #060B1A;
+      text-align: center;
+      padding: 30px 20px;
+    }
+    .header img {
+      max-width: 120px;
+      height: auto;
+    }
+
+    /* Content */
+    .content {
+      padding: 30px 40px;
+      background-color: #0A112E;
+      color: #E6E6E6;
+    }
+    .content h2 {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #7FB3FF;
+    }
+    .content p {
+      font-size: 16px;
+      line-height: 1.7;
+      margin: 12px 0;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #cccccc;
+      background-color: #060B1A;
+    }
+    .footer a {
+      color: #b0b0b0;
+      text-decoration: none;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .rights {
+      font-size: 12px;
+      color: #aaaaaa;
+      padding: 10px 20px;
+      background-color: #060B1A;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        padding: 20px;
+      }
+      .footer {
+        padding: 15px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+
+    <!-- Header with logo -->
+    <div class="header">
+      <img src="https://raw.githubusercontent.com/RehanAdilAbbasiRAA/J-S-Company/main/J%26S%20logo.png" alt="J&S Technologies Logo" />
+    </div>
+
+    <!-- Email container -->
+    <div class="email-container">
+
+      <!-- Content -->
+      <div class="content">
+        <h2>Internship Confirmation</h2>
+        <p>Dear <strong>{{applicant_name}}</strong>,</p>
+
+        <p>Thank you for applying to <strong>J&S Technologies</strong>. We are pleased to inform you that you have been selected for a remote internship with our organization.</p>
+
+        <p>Your internship with <strong>{{account.company}}</strong> is scheduled to begin on <strong>{{account.time}}</strong>. This is a fully <strong>remote position</strong>, so please ensure that you have a reliable internet connection and access to a quiet working environment.</p>
+
+        <p>Before your first day, please join our official Slack workspace where we’ll share onboarding details and keep in touch throughout the program.</p>
+
+        <p>We look forward to having you on our team and are excited to collaborate with you. Let’s build something amazing together 🚀</p>
+
+        <p style="margin-top: 30px;">Warm regards,<br><strong>HR Department</strong><br>J&S Technologies</p>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p><strong>J&S Technologies</strong></p>
+      <p>Rawalpindi, Pakistan</p>
+      <p>
+        <a href="mailto:jstechnologies913@gmail.com">jstechnologies913@gmail.com</a> |
+        <a href="https://www.linkedin.com/company/j-s-services-j-s-technologies/posts/?feedView=all" target="_blank">LinkedIn</a>
+      </p>
+    </div>
+
+    <!-- Rights -->
+    <div class="rights">
+      © 2025 J&S Technologies. All rights reserved.
+    </div>
+
+  </div>
+</body>
+</html>

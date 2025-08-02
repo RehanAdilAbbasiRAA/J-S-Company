@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weekly Internship Update</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f2f2f2; font-family: Arial, sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f2f2f2; padding: 40px 0;">
+    <tr>
+      <td align="center">
+        <table width="600" cellpadding="0" cellspacing="0" border="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden;">
+
+          <!-- Header -->
+          <tr>
+            <td style="padding: 20px 30px; background-color: #ffffff; border-bottom: 1px solid #eaeaea;">
+              <table width="100%">
+                <tr>
+                  <td align="left" style="font-size: 24px; font-weight: bold; color: #0B0B45;">J&S Technologies</td>
+                  <td align="right">
+                    <img src="https://raw.githubusercontent.com/RehanAdilAbbasiRAA/J-S-Company/main/J%26S%20logo.png" alt="J&S Logo" style="max-width: 80px;" />
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding: 30px 40px; background-color: #f9f9f9; color: #333333;">
+              <h2 style="margin-top: 0; color: #2c3e50;">Weekly Internship Update</h2>
+
+              <p style="font-size: 16px;">Dear <strong>{{intern_name}}</strong>,</p>
+              <p style="font-size: 16px;">Below is a summary of your internship progress during the week:</p>
+
+              <p style="font-size: 16px;"><strong>Duration:</strong> {{start_date}} to {{end_date}}</p>
+
+              <!-- Task Table -->
+              <table width="100%" cellpadding="10" cellspacing="0" border="1" style="border-collapse: collapse; margin-top: 20px; font-size: 14px; color: #333;">
+                <thead style="background-color: #e8f0fe;">
+                  <tr>
+                    <th align="left" style="width: 10%;">#</th>
+                    <th align="left">Task Completed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for task in tasks %}
+                  <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ task }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+
+              <p style="font-size: 16px; margin-top: 30px;">Keep up the good work! We appreciate your contributions and commitment.</p>
+
+              <p style="font-size: 16px;">Best regards,<br><strong>HR Department</strong><br>J&S Technologies</p>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #ffffff; padding: 20px 30px; border-top: 1px solid #eaeaea;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <!-- Logo Column -->
+                  <td align="left" style="width: 0%; vertical-align: top;">
+                    <img src="https://raw.githubusercontent.com/RehanAdilAbbasiRAA/J-S-Company/main/J%26S%20logo.png" alt="Footer Logo" style="max-width: 60px;" />
+                  </td>
+
+                  <!-- Info Column -->
+                  <td align="center" style="width: 67%; font-size: 14px; color: #999999;">
+                    <div style="display: inline-block; text-align: center;">
+                      <p style="margin: 2px 0;"><strong>J&S Technologies</strong></p>
+                      <p style="margin: 2px 0;">Rawalpindi, Pakistan</p>
+                      <p style="margin: 2px 0;">
+                        <a href="mailto:jstechnologies913@gmail.com" style="color: #007BFF; text-decoration: none;">jstechnologies913@gmail.com</a> |
+                        <a href="https://www.linkedin.com/company/j-s-services-j-s-technologies/posts/?feedView=all" style="color: #007BFF; text-decoration: none;">LinkedIn</a>
+                      </p>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Copyright -->
+          <tr>
+            <td style="text-align: center; font-size: 12px; color: #ccc; padding: 10px 0 20px;">
+              © 2025 J&S Technologies. All rights reserved.
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
