@@ -55,6 +55,33 @@ async def send_email(details: EmailDetails):
     return {"status": "Email sent successfully"}
 
 
+
+def _not_used_send_email_via_mailgun(user):
+    import requests
+
+    mailgun_domain = os.getenv("MAILGUN_DOMAIN", "sandbox.mailgun.fake.domain")
+    mailgun_api_key = os.getenv("MAILGUN_API_KEY", "key-fakeapikey1234567890")
+    sender_email = f"noreply@{mailgun_domain}"
+    recipient_email = "example@client.com" or user
+
+    subject = "Fake Mailgun Test"
+    html_content = "<html><body><h1>This is a fake Mailgun email</h1></body></html>"
+
+    # This code is NEVER executed - just shows the logic
+    response = requests.post(
+        f"https://api.mailgun.net/v3/{mailgun_domain}/messages",
+        auth=("api", mailgun_api_key),
+        data={
+            "from": sender_email,
+            "to": recipient_email,
+            "subject": subject,
+            "html": html_content
+        }
+    )
+    print("Fake Mailgun response (not actually sent):", response.status_code)
+
+
+
 @app.post("/send-internship-confirmation/")
 async def confirmation_internship_email(
     recipient: EmailStr = Form(...),
@@ -97,7 +124,7 @@ async def confirmation_internship_email(
         password=os.getenv("EMAIL_PASSWORD")
     )
 
-    return {"status": "Internship confirmation email sent"}
+    return {"status": "Internship confirmation email sent" , "success":True}
 
 
 @app.post("/send-weekly-email/")
@@ -107,19 +134,19 @@ async def send_weekly_email(
     time: str = Form(""),
     tasks: Optional[str] = Form("")
 ):
-    # Default values
+    # Setup default values
     intern_name = username.strip() if username.strip() else "Intern"
+    company_name = "J&S Technologies"
     start_date = "Monday, 4th August 2025"
     end_date = "Friday, 8th August 2025"
-    company_name = "J&S Technologies"
 
-    # Override if custom time string provided (basic assumption: "Start to End")
-    if time and "to" in time:
-        time_parts = [part.strip() for part in time.split("to")]
-        if len(time_parts) == 2:
-            start_date, end_date = time_parts
+    # If custom time provided with comma
+    if time and "," in time:
+        parts = [p.strip() for p in time.split(",", 1)]
+        if len(parts) == 2:
+            start_date, end_date = parts
 
-    # Tasks
+    # Task handling
     default_tasks = [
         "Completed onboarding process",
         "Set up development environment",
@@ -127,9 +154,9 @@ async def send_weekly_email(
         "Pushed first commit to repository",
         "Attended team stand-up meetings"
     ]
-    task_list = [t.strip() for t in tasks.split(",")] if tasks.strip() else default_tasks
+    task_list = [t.strip() for t in tasks.split(",")] if tasks and tasks.strip() else default_tasks
 
-    # Render email
+    # Render template
     rendered_template = templates.get_template("weekly_update.html").render({
         "intern_name": intern_name,
         "start_date": start_date,
@@ -137,7 +164,7 @@ async def send_weekly_email(
         "tasks": task_list
     })
 
-    # Send email
+    # Compose and send email
     message = EmailMessage()
     message["From"] = os.getenv("EMAIL_SENDER")
     message["To"] = recipient
@@ -154,4 +181,4 @@ async def send_weekly_email(
         password=os.getenv("EMAIL_PASSWORD")
     )
 
-    return JSONResponse(content={"status": "Weekly summary email sent"})
+    return JSONResponse(content={"status": "Weekly summary email sent" , "success":True})
